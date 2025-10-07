@@ -108,7 +108,3 @@ Cette première expérience avec React m'a permis de découvrir :
 Daniel Vale - [LinkedIn](https://www.linkedin.com/in/danielvale050403/) - daniel.pintovale@heig-vd.ch
 
 Site web : [https://dvale.ch](https://dvale.ch)
-
----
-
-⭐ N'hésitez pas à laisser une étoile si ce projet vous inspire !
