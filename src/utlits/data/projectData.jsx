@@ -26,7 +26,7 @@ export const projectsData = [
       },
       {
         type: "figma",
-        url: "https://www.figma.com/design/FEoB9h8B6SN7L86QUDOFKH/DJMK_BreitlingLeague?node-id=19-62&t=W7ljLV9x2ksHXu4D-1",
+        url: "https://www.figma.com/design/V2P2A2RyDCqwVYSGSuEgFm/BreitlingLeague?node-id=19-62&t=AtHpn1iGtheqr6v8-1",
         label: "Design Figma",
       },
     ],
@@ -49,7 +49,7 @@ export const projectsData = [
     links: [
       {
         type: "github",
-        url: "https://github.com/d-vale/edx_cs50",
+        url: "https://github.com/d-vale/harvard_cs50",
         label: "Repository GitHub",
       },
       {
@@ -71,7 +71,7 @@ export const projectsData = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     src: "/images/projects/hackdays_rts/mockup.jpg",
     images: [
       "/images/projects/hackdays_rts/repo.jpg",
@@ -93,7 +93,7 @@ export const projectsData = [
       },
       {
         type: "figma",
-        url: "https://www.figma.com/design/Ho4O2S6fI04IZkE7X6nGjy/Hackdays?node-id=1-3&t=K8IzChALJxgFgcB1-1",
+        url: "https://www.figma.com/design/uAt0xTiGT9gfKIgzLyKhFi/Hackdays-RTS?node-id=1-3&t=2pmczHeLXn7etUvx-1",
         label: "Design Figma",
       },
       {
@@ -104,7 +104,7 @@ export const projectsData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     src: "/images/projects/cyclab/mockup.jpg",
     images: [
       "/images/projects/cyclab/instagram.jpg",
@@ -128,6 +128,31 @@ export const projectsData = [
   },
   {
     id: 5,
+    src: "/images/projects/naturaquest/homepage.jpg",
+    images: [
+      "/images/projects/naturaquest/mockup1.png",
+      "/images/projects/naturaquest/mockup2.png",
+      "/images/projects/naturaquest/mockup3.png",
+      "/images/projects/naturaquest/mockup4.png",
+    ],
+    category: ["UI/UX"],
+    title: "NaturaQuest",
+    description:
+      "Dans le cadre d’un cours de UI à la HEIG-VD, nous avons eu pour mission de concevoir une application intégrant des éléments de gamification pour la collecte d’informations sur la nature. L’objectif est d’inciter les utilisateurs lorsqu’ils se promènent à s’investir dans des missions, permettant ainsi aux scientifiques de recueillir des données fiables.",
+    year: 2024,
+    client: "HEIG-VD",
+    projectType: "Projet fictif",
+    color: "#1A453C",
+    links: [
+      {
+        type: "figma",
+        url: "https://www.figma.com/design/QmEa3V24yyQRibTl12QCn0/NaturaQuest?node-id=0-1&t=JW8QXnUDlRJLJ3bG-1",
+        label: "Design Figma",
+      },
+    ],
+  },
+  {
+    id: 6,
     src: "/images/projects/propics_swisscom/landing.jpg",
     /*     images: [
       "/images/projects/single-project1.jpg",
