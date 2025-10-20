@@ -15,36 +15,32 @@ const Resume = () => {
             <div className="col-xl-6 col-md-6">
               <div className="single-resume">
                 <h2>Éxperience</h2>
-                <div className="experience-list">
-                  {experienceData.map((experience) => (
-                    <Card
-                      key={experience.id}
-                      year={experience.year}
-                      title={experience.title}
-                      institution={experience.institution}
-                      icon={experience.icon}
-                    />
-                  ))}
-                </div>
+                {experienceData.map((experience) => (
+                  <Card
+                    key={experience.id}
+                    year={experience.year}
+                    title={experience.title}
+                    institution={experience.institution}
+                    icon={experience.icon}
+                  />
+                ))}
               </div>
             </div>
 
             {/* <!-- // END EXPERIENCE RESUME DESIGN AREA -->
                         <!-- START EDUCATION RESUME DESIGN AREA --> */}
             <div className="col-xl-6 col-md-6">
-              <div className="experience-list">
-                <div className="single-resume">
-                  <h2>Education</h2>
-                  {educationData.map((education) => (
-                    <Card
-                      key={education.id}
-                      year={education.year}
-                      title={education.title}
-                      institution={education.institution}
-                      icon={education.icon}
-                    />
-                  ))}
-                </div>
+              <div className="single-resume">
+                <h2>Education</h2>
+                {educationData.map((education) => (
+                  <Card
+                    key={education.id}
+                    year={education.year}
+                    title={education.title}
+                    institution={education.institution}
+                    icon={education.icon}
+                  />
+                ))}
               </div>
             </div>
 

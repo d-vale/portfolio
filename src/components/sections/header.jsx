@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiShakeHandsFill } from "@remixicon/react";
 import { menuList } from "@/utlits/data/menuList";
-import Image from "next/image";
+import ThemeToggle from "@/components/ui/themeToggle";
 
 const Header = () => {
   const pathName = usePathname();
@@ -28,81 +28,71 @@ const Header = () => {
       setisSticky(false);
     }
   };
+
   return (
-    <header className={`main-header ${isSticky ? "fixed-header" : ""}`}>
-      <div className="header-upper">
-        <div className="container">
-          <div className="header-inner d-flex align-items-center">
-            {/* <!-- START LOGO DESIGN AREA --> */}
-            <div className="logo-outer">
-              <div className="logo">
-                <Link href="/">
-                  <h5>Daniel Vale</h5>
-                  {/*                   <Image
-                    width={120}
-                    height={40}
-                    sizes="100vw"
-                    src={"/images/logo.png"}
-                    alt="Logo"
-                    title="Logo"
-                  /> */}
+    <>
+      <header className={`main-header ${isSticky ? "fixed-header" : ""}`}>
+        <div className="header-upper">
+          <div className="container">
+            <div className="header-inner d-flex align-items-center">
+              {/* START LOGO DESIGN AREA */}
+              <div className="logo-outer">
+                <div className="logo">
+                  <Link href="/">
+                    <h5>Daniel Vale</h5>
+                  </Link>
+                </div>
+              </div>
+              {/* / END LOGO DESIGN AREA */}
+
+              {/* START NAV DESIGN AREA */}
+              <div className="nav-outer clearfix mx-auto">
+                <nav className="main-menu navbar-expand-lg">
+                  <div className="navbar-header">
+                    <div className="mobile-logo">
+                      <Link href="/">
+                        <h5>Daniel Vale</h5>
+                      </Link>
+                    </div>
+                    {/* Toggle Button */}
+                    <button
+                      type="button"
+                      className="navbar-toggle"
+                      data-bs-toggle="collapse"
+                      data-bs-target=".navbar-collapse"
+                    >
+                      <span className="icon-bar"></span>
+                      <span className="icon-bar"></span>
+                      <span className="icon-bar"></span>
+                    </button>
+                  </div>
+                  <div className="navbar-collapse collapse">
+                    <ul className="navigation onepage clearfix">
+                      {menuList.map(({ id, label, path }) => (
+                        <li key={id}>
+                          <Link href={path} className="nav-link-click">
+                            {label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+
+              <div className="menu-btns">
+                <Link href="/contact" className="theme-btn">
+                  Contactez moi <RiShakeHandsFill size={15} />
                 </Link>
               </div>
             </div>
-            {/* <!-- / END LOGO DESIGN AREA -->
-                        <!-- START NAV DESIGN AREA --> */}
-            <div className="nav-outer clearfix mx-auto">
-              {/* <!-- Main Menu --> */}
-              <nav className="main-menu navbar-expand-lg">
-                <div className="navbar-header">
-                  <div className="mobile-logo">
-                    <Link href="/">
-                      <h5>Daniel Vale</h5>
-
-                      {/*                       <Image
-                        width={75}
-                        height={25}
-                        sizes="100vw"
-                        src={"/images/logo.png"}
-                        alt="Logo"
-                        title="Logo"
-                      /> */}
-                    </Link>
-                  </div>
-                  {/* <!-- Toggle Button --> */}
-                  <button
-                    type="button"
-                    className="navbar-toggle"
-                    data-bs-toggle="collapse"
-                    data-bs-target=".navbar-collapse"
-                  >
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                    <span className="icon-bar"></span>
-                  </button>
-                </div>
-                <div className="navbar-collapse collapse">
-                  <ul className="navigation onepage clearfix">
-                    {menuList.map(({ id, label, path }) => (
-                      <li key={id}>
-                        <Link href={path} className="nav-link-click">
-                          {label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </nav>
-            </div>
-            <div className="menu-btns">
-              <Link href="/contact" className="theme-btn">
-                Contactez moi <RiShakeHandsFill size={15} />{" "}
-              </Link>
-            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Bouton Toggle Thème */}
+      <ThemeToggle />
+    </>
   );
 };
 
