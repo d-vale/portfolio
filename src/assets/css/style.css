@@ -30,6 +30,7 @@
 * 15.PRELOADER & BOUNCE CCS STYLE
 * 16.BLOG CSS STYLE
 * 17.PROJECT GALLERY & LIGHTBOX CSS STYLE
+* 18.DARK AND LIGHT MODE
 * ----------------------------------------------------------------------------------------
 */
 
@@ -38,7 +39,9 @@
 * 01.GLOBAL STYLE
 * ----------------------------------------------------------------------------------------
 */
-:root {
+
+:root,
+:root[data-theme="dark"] {
   --main-color: #9f9f9f;
   --heading-color: #fff;
   --primary-color: #ba0000;
@@ -48,7 +51,34 @@
   --border-color: rgba(119, 119, 125, 0.2);
   --button-border: rgba(119, 119, 125, 0.2);
   --body-background: #000;
-  --grey-bg: #e6eaee;
+  --grey-bg: #121214;
+  --card-bg: #121214;
+  --input-bg: #f9f9f9;
+  --input-color: #000;
+  --text-muted: rgb(119, 119, 125);
+  --navbar-bg: #000;
+  --box-shadow: rgba(255, 255, 255, 0.025) 0px 0.362176px 0.651917px -1px inset,
+    rgba(255, 255, 255, 0.036) 0px 3px 5.4px -2px inset;
+}
+
+:root[data-theme="light"] {
+  --main-color: #666;
+  --heading-color: #1a1a1a;
+  --primary-color: #ba0000;
+  --lighter-color: #333;
+  --subtitle-color: #333;
+  --black-color: #fff;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --button-border: rgba(0, 0, 0, 0.1);
+  --body-background: #f5f5f5;
+  --grey-bg: #fff;
+  --card-bg: #fff;
+  --input-bg: #fff;
+  --input-color: #333;
+  --text-muted: #666;
+  --navbar-bg: #fff;
+  --box-shadow: rgba(0, 0, 0, 0.05) 0px 0.362176px 0.651917px -1px,
+    rgba(0, 0, 0, 0.08) 0px 3px 5.4px -2px;
 }
 
 * {
@@ -3014,7 +3044,7 @@ ul.blog_pagination li a:hover {
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
-   align-items: center;
+  align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -3218,13 +3248,497 @@ ul.blog_pagination li a:hover {
   background: #ffffff;
 }
 
+/* Points de pagination en mode light */
+[data-theme="light"] .distinctions-pagination .swiper-pagination-bullet {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .distinctions-pagination .swiper-pagination-bullet-active {
+  background: var(--primary-color);
+}
+
 /* Responsive pour les distinctions */
 @media (max-width: 768px) {
   .distinctions-area .slider-arrows {
     display: none;
   }
-  
+
   .distinctions-pagination {
     display: block;
   }
+}
+
+/*
+* ----------------------------------------------------------------------------------------
+* 18.DARK AND LIGHT MODE
+* ----------------------------------------------------------------------------------------
+*/
+
+/* ===== BOUTON TOGGLE THÈME ===== */
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive */
+@media only screen and (max-width: 767px) {
+  .theme-toggle-btn {
+    right: 10px;
+    bottom: 70px;
+  }
+}
+
+/* ===== TRANSITIONS POUR LE CHANGEMENT DE THÈME ===== */
+body,
+.container-inner,
+.about-image-part,
+.about-content-part,
+.about-content-part-bottom,
+.single-resume,
+.experience-list,
+.project-item,
+.testimonial-item,
+.pricing-item,
+.blog-item,
+.service-item,
+.skill-item,
+.contact-form-area,
+.contact-content-part,
+.call-to-action-part,
+.main-header .header-upper,
+.single-side-bar {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* ===== ADAPTATIONS SPÉCIFIQUES MODE CLAIR ===== */
+
+/* Cartes et conteneurs */
+[data-theme="light"] .about-image-part,
+[data-theme="light"] .about-content-part,
+[data-theme="light"] .about-content-part-bottom,
+[data-theme="light"] .container-inner,
+[data-theme="light"] .single-resume,
+[data-theme="light"] .experience-list {
+  background-color: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.362176px 0.651917px -1px,
+    rgba(0, 0, 0, 0.08) 0px 3px 5.4px -2px;
+}
+
+/* Textes */
+[data-theme="light"] .about-image-part h2,
+[data-theme="light"] .about-image-part p,
+[data-theme="light"] .about-content-part h2,
+[data-theme="light"] .about-content-part p,
+[data-theme="light"] .hero-content h1,
+[data-theme="light"] .hero-content h2 {
+  color: #1a1a1a;
+}
+
+/* Social icons */
+[data-theme="light"] .social-style-one a,
+[data-theme="light"] .about-social ul li a {
+  background: #ffffff;
+  color: #333;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .social-style-one a:hover,
+[data-theme="light"] .about-social ul li a:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Boutons details */
+[data-theme="light"] .details-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+[data-theme="light"] .details-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Hero counter */
+[data-theme="light"] .hero-counter-area {
+  background: var(--primary-color);
+}
+
+[data-theme="light"] .hero-counter-area .count-text,
+[data-theme="light"] .hero-counter-area .counter-title {
+  color: #fff;
+}
+
+/* Formulaires */
+[data-theme="light"] input,
+[data-theme="light"] select,
+[data-theme="light"] textarea,
+[data-theme="light"] .form-control {
+  background: #fff;
+  color: #333;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+[data-theme="light"] .main-menu .navbar-collapse li a {
+  color: #333;
+}
+
+[data-theme="light"] .main-menu .navbar-collapse li a:hover {
+  color: var(--primary-color);
+}
+
+[data-theme="light"] .fixed-header .main-menu .navbar-collapse li a:hover {
+  color: var(--primary-color);
+}
+
+[data-theme="light"] .main-header .header-upper {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Menu mobile */
+[data-theme="light"] .main-menu .navbar-header .navbar-toggle .icon-bar {
+  background: #333;
+}
+
+@media only screen and (max-width: 991px) {
+  [data-theme="light"] .main-menu .navbar-collapse > ul {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="light"] .main-menu .navbar-collapse li {
+    border-top-color: rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="light"] .main-menu .navbar-collapse > ul > li:last-child {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="light"] .main-menu .navbar-collapse li a {
+    color: #333;
+    opacity: 1;
+  }
+
+  [data-theme="light"] .main-menu .navbar-collapse li a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+  }
+
+  [data-theme="light"] .main-menu .navbar-collapse li.dropdown .dropdown-btn {
+    border-left-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+  }
+
+  /* Menu mobile lors du scroll (fixed-header) en mode light */
+  [data-theme="light"] .fixed-header .main-menu .navbar-collapse li a {
+    color: #333;
+    opacity: 1;
+  }
+
+  [data-theme="light"] .fixed-header .main-menu .navbar-collapse li a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+  }
+}
+
+/* Logo texte */
+[data-theme="light"] .logo h5,
+[data-theme="light"] .mobile-logo h5 {
+  color: #1a1a1a;
+}
+
+/* Liste de projets/skills */
+[data-theme="light"] .list-style-one li,
+[data-theme="light"] .list-style-one.two-column li {
+  color: #666;
+}
+
+/* Flèches de navigation */
+[data-theme="light"] .arrow {
+  color: #fff;
+  background: var(--primary-color);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .arrow:hover,
+[data-theme="light"] .arrow:focus {
+  color: var(--primary-color);
+  background: transparent;
+  border-color: var(--primary-color);
+}
+
+[data-theme="light"] .arrow:focus:not(:hover) {
+  color: #fff;
+  background: var(--primary-color);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Preloader */
+[data-theme="light"] .preloader {
+  background: #f5f5f5;
+}
+
+[data-theme="light"] .preloader svg path {
+  fill: #e0e0e0;
+}
+
+[data-theme="light"] .load-text span {
+  color: #333;
+}
+
+/* Resume items */
+[data-theme="light"] .resume-item {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .resume-item .icon {
+  background: #f0f0f0;
+  color: var(--primary-color);
+}
+
+[data-theme="light"] .resume-item .content h4 {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .resume-item .content .company,
+[data-theme="light"] .resume-item .content .years {
+  color: #666;
+}
+
+/* Project items */
+[data-theme="light"] .project-item.style-two {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .project-item .project-content h3 {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .project-item .project-content .sub-title {
+  color: #666;
+}
+
+/* Section titles */
+[data-theme="light"] .section-title h2 {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .section-title p,
+[data-theme="light"] .section-title .sub-title {
+  color: #666;
+}
+
+/* Filter buttons */
+[data-theme="light"] .filter-btns-one li {
+  color: #666;
+}
+
+[data-theme="light"] .filter-btns-one li.current {
+  color: var(--primary-color);
+}
+
+/* Bouton header "Contactez-moi" */
+[data-theme="light"] .menu-btns .theme-btn {
+  background: transparent;
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .menu-btns .theme-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+/* Images des entreprises - Filtre pour inverser les logos en mode clair */
+[data-theme="light"] .scroller__inner img,
+[data-theme="light"] .company-list img {
+  filter: brightness(0) saturate(100%) invert(0);
+  opacity: 1;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Conteneurs de la page projet */
+[data-theme="light"] .single-project-page-design {
+  background: #f5f5f5;
+}
+
+[data-theme="light"] .single-project-page-left,
+[data-theme="light"] .single-project-page-right {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.362176px 0.651917px -1px,
+    rgba(0, 0, 0, 0.08) 0px 3px 5.4px -2px;
+}
+
+/* Titres et textes de la page projet */
+[data-theme="light"] .single-project-page-design h1,
+[data-theme="light"] .single-project-page-design h2,
+[data-theme="light"] .single-project-page-design h3 {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .single-project-page-design p {
+  color: #666;
+}
+
+[data-theme="light"] .single-info p,
+[data-theme="light"] .single-info h3 {
+  color: #1a1a1a;
+}
+
+/* Boutons des liens de projet */
+[data-theme="light"] .project-link {
+  background: #f8f9fa;
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .project-link:hover {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+/* Call to action */
+[data-theme="light"] .call-to-action-part {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.362176px 0.651917px -1px,
+    rgba(0, 0, 0, 0.08) 0px 3px 5.4px -2px;
+}
+
+[data-theme="light"] .call-to-action-part h2 {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .call-to-action-part p {
+  color: #666;
+}
+
+/* Contact form */
+[data-theme="light"] .contact-form-area,
+[data-theme="light"] .contact-content-part {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .contact-form-area label,
+[data-theme="light"] .single-contact h2 {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .single-contact p,
+[data-theme="light"] .single-contact a {
+  color: #666;
+}
+
+[data-theme="light"] .contact-icon i {
+  color: var(--primary-color);
+}
+
+/* Footer */
+[data-theme="light"] .footer-bottom {
+  background: #f5f5f5;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .copyright-text p {
+  color: #666;
+}
+
+[data-theme="light"] .copyright-text a,
+[data-theme="light"] .extra-copyright a {
+  color: var(--primary-color);
+}
+
+/* Tous les boutons theme-btn en mode clair */
+[data-theme="light"] .theme-btn {
+  background: transparent;
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .theme-btn:hover {
+  background: var(--primary-color);
+  color: #fff !important;
+  border-color: var(--primary-color);
+}
+
+/* Bouton rouge principal (Télécharger CV, etc.) */
+[data-theme="light"] .hero-btns .theme-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+[data-theme="light"] .hero-btns .theme-btn:hover {
+  background: transparent;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color);
+}
+
+/* Bouton Envoyer message du formulaire */
+[data-theme="light"] .contact-form button.theme-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+[data-theme="light"] .contact-form button.theme-btn:hover {
+  background: transparent;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color);
+}
+
+/* Contours et bordures bizarres */
+[data-theme="light"] .experience-list,
+[data-theme="light"] .single-resume {
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .resume-item {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Correction des backgrounds des icônes */
+[data-theme="light"] .resume-item .icon {
+  background: #f8f9fa;
+  color: var(--primary-color);
+}
+
+/* Input focus */
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus,
+[data-theme="light"] .form-control:focus {
+  border-bottom-color: var(--primary-color);
 }
