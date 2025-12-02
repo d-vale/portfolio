@@ -59,7 +59,7 @@ const Hero = () => {
                       <i>
                         <RiCircleFill size={14} />
                       </i>{" "}
-                      Recherche un travail de bachelor
+                      Travail de bachelor en cours ...
                     </li>
                   </ul>
                 </div>
