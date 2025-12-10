@@ -29,6 +29,11 @@ export const projectsData = [
         url: "https://www.figma.com/design/V2P2A2RyDCqwVYSGSuEgFm/BreitlingLeague?node-id=19-62&t=AtHpn1iGtheqr6v8-1",
         label: "Design Figma",
       },
+      {
+        type: "video",
+        url: "/video/breitlingleague-teaser.mp4",
+        label: "Vidéo teaser",
+      },
     ],
   },
   {
