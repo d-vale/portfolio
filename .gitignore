@@ -35,4 +35,4 @@ yarn-error.log*
 next-env.d.ts
 
 # video files
-/video/*.mp4
+/public/video/*.mp4
