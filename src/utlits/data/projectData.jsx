@@ -1,8 +1,47 @@
-import { color } from "framer-motion";
-
 export const projectsData = [
   {
     id: 1,
+    src: "/images/projects/tracks/landing.jpg",
+    images: [
+      "/images/projects/tracks/mockup1.jpg",
+      "/images/projects/tracks/mockup2.jpg",
+      "/images/projects/tracks/mockup3.jpg",
+      "/images/projects/tracks/mockup4.jpg",
+    ],
+    category: ["Développement", "UI/UX"],
+    title: "Tracks",
+    description: `Track est une application mobile fullstack de suivi GPS développée à la HEIG-VD dans le cadre d'un projet croisé entre ArchiOWeb et DevMobil. Le projet combine une API REST robuste construite avec Express.js et MongoDB, ainsi qu'une web app Vue.js moderne, formant ensemble une solution complète de tracking sportif. L'application permet d'enregistrer ses courses en temps réel avec une cartographie interactive Mapbox proposant trois styles différents (jour, nuit, topographique). Les coureurs peuvent visualiser leurs performances détaillées, capturer des photos directement via la caméra de leur smartphone avec stockage sur Cloudinary, et suivre les activités de la communauté grâce à une communication temps réel via WebSocket. Le système détecte automatiquement les records personnels sur différentes distances (5K, 10K, semi-marathon, marathon) et enrichit chaque activité avec les conditions météo via l'API Open-Meteo.
+
+    Côté technique, le backend exploite les fonctionnalités avancées de MongoDB comme les index géospatiaux pour optimiser les requêtes de position GPS, tandis que l'authentification JWT sécurisée protège l'accès avec rate limiting anti-bruteforce. Le frontend Vue 3 utilise la Composition API avec des composables réutilisables et une interface Tailwind CSS au style glassmorphism avec support du dark mode. L'application fonctionne également en mode hors-ligne grâce au stockage localStorage qui synchronise automatiquement les données une fois la connexion rétablie.
+
+    Ce projet m'a permis de maîtriser l'ensemble de la chaîne fullstack, de la structuration d'une API maintenable aux calculs géospatiaux en passant par l'intégration des APIs hardware du navigateur. L'API atteint 83% de couverture de tests avec Jest et propose une documentation OpenAPI complète.
+
+    ⚠️ Note importante : Cette application a été conçue avec une approche "Mobile Only". Pour une expérience optimale, veuillez la consulter sur smartphone ou activer la vue mobile (F12) de votre navigateur.
+    Contactez-moi pour plus d'informations sur ce projet.`,
+    year: 2026,
+    client: "Tracks",
+    projectType: "Projet académique",
+    color: "#898787",
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/d-vale/track-front",
+        label: "Repo frontend",
+      },
+      {
+        type: "github",
+        url: "https://github.com/K-sel/track-api",
+        label: "Repo backend",
+      },
+      {
+        type: "figma",
+        url: "https://www.figma.com/design/1r9Njp4cKROPqdCJYgdr1l/Tracks?node-id=0-1&t=TomDr76gaBkq7WOC-1",
+        label: "Design Figma",
+      },
+    ],
+  },
+  {
+    id: 2,
     src: "/images/projects/breitling_league/mockup.jpg",
     images: [
       "/images/projects/breitling_league/dc.jpg",
@@ -37,7 +76,7 @@ export const projectsData = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     src: "/images/projects/cs50_cs/course_logo.jpg",
     images: [
       "/images/projects/cs50_cs/homepage.jpg",
@@ -76,7 +115,7 @@ export const projectsData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     src: "/images/projects/hackdays_rts/mockup.jpg",
     images: [
       "/images/projects/hackdays_rts/repo.jpg",
@@ -109,7 +148,7 @@ export const projectsData = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     src: "/images/projects/cyclab/mockup.jpg",
     images: [
       "/images/projects/cyclab/instagram.jpg",
@@ -132,7 +171,7 @@ export const projectsData = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     src: "/images/projects/naturaquest/homepage.jpg",
     images: [
       "/images/projects/naturaquest/mockup1.png",
@@ -157,7 +196,7 @@ export const projectsData = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     src: "/images/projects/propics_swisscom/landing.jpg",
     /*     images: [
       "/images/projects/single-project1.jpg",

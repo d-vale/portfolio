@@ -31,7 +31,7 @@ const Resume = () => {
                         <!-- START EDUCATION RESUME DESIGN AREA --> */}
             <div className="col-xl-6 col-md-6">
               <div className="single-resume">
-                <h2>Education</h2>
+                <h2>Éducation</h2>
                 {educationData.map((education) => (
                   <Card
                     key={education.id}

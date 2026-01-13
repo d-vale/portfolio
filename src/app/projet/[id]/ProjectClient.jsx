@@ -163,7 +163,7 @@ export default function ProjectClient({ project }) {
             <div className="col-lg-8">
               <div className="single-project-page-right wow fadeInUp delay-0-4s">
                 <h2>Description</h2>
-                <p>{project.description}</p>
+                <p style={{ whiteSpace: 'pre-line' }}>{project.description}</p>
 
                 {/* Section des liens */}
                 {project.links && project.links.length > 0 && (
