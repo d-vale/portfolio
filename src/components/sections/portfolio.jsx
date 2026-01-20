@@ -45,12 +45,14 @@ const Portfolio = ({ className }) => {
 
   const filteredProjects =
     category === "All"
-      ? projectsData
-      : projectsData.filter((image) =>
-          Array.isArray(image.category)
-            ? image.category.includes(category)
-            : image.category === category
-        );
+      ? [...projectsData].reverse()
+      : projectsData
+          .filter((image) =>
+            Array.isArray(image.category)
+              ? image.category.includes(category)
+              : image.category === category
+          )
+          .reverse();
 
   return (
     <section id="portfolio" className={`projects-area ${className}`}>
