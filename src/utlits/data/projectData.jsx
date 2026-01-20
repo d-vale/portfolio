@@ -1,6 +1,7 @@
 export const projectsData = [
   {
     id: 1,
+    slug: "tracks",
     src: "/images/projects/tracks/landing.jpg",
     images: [
       "/images/projects/tracks/mockup1.jpg",
@@ -24,6 +25,11 @@ export const projectsData = [
     color: "#898787",
     links: [
       {
+        type: "site",
+        url: "https://tracks-xy4b.onrender.com",
+        label: "Accéder a l'application",
+      },
+      {
         type: "github",
         url: "https://github.com/d-vale/track-front",
         label: "Repo frontend",
@@ -42,6 +48,7 @@ export const projectsData = [
   },
   {
     id: 2,
+    slug: "breitling-league",
     src: "/images/projects/breitling_league/mockup.jpg",
     images: [
       "/images/projects/breitling_league/dc.jpg",
@@ -77,6 +84,7 @@ export const projectsData = [
   },
   {
     id: 3,
+    slug: "cs50-introduction",
     src: "/images/projects/cs50_cs/course_logo.jpg",
     images: [
       "/images/projects/cs50_cs/homepage.jpg",
@@ -116,6 +124,7 @@ export const projectsData = [
   },
   {
     id: 4,
+    slug: "hackdays-rts",
     src: "/images/projects/hackdays_rts/mockup.jpg",
     images: [
       "/images/projects/hackdays_rts/repo.jpg",
@@ -149,6 +158,7 @@ export const projectsData = [
   },
   {
     id: 5,
+    slug: "cyclab",
     src: "/images/projects/cyclab/mockup.jpg",
     images: [
       "/images/projects/cyclab/instagram.jpg",
@@ -172,6 +182,7 @@ export const projectsData = [
   },
   {
     id: 6,
+    slug: "naturaquest",
     src: "/images/projects/naturaquest/homepage.jpg",
     images: [
       "/images/projects/naturaquest/mockup1.png",
@@ -197,6 +208,7 @@ export const projectsData = [
   },
   {
     id: 7,
+    slug: "propics-swisscom",
     src: "/images/projects/propics_swisscom/landing.jpg",
     /*     images: [
       "/images/projects/single-project1.jpg",

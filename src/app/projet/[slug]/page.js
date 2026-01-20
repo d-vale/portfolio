@@ -6,14 +6,13 @@ import ProjectClient from './ProjectClient';
 // Cette fonction génère les routes statiques
 export async function generateStaticParams() {
     return projectsData.map((project) => ({
-        id: project.id.toString(),
+        slug: project.slug,
     }));
 }
 
 // Composant serveur
 export default function SingleProjectPage({ params }) {
-    const id = parseInt(params.id);
-    const project = projectsData.find(p => p.id === id);
+    const project = projectsData.find(p => p.slug === params.slug);
 
     if (!project) {
         return notFound();
