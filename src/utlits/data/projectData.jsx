@@ -118,6 +118,11 @@ export const projectsData = [
     color: "#FBDB32",
     links: [
       {
+        type: "certificate",
+        url: "https://certificates.cs50.io/23be10fe-dd7d-4b1b-9edf-45c3b6c87382.pdf?size=letter",
+        label: "Certificat",
+      },
+      {
         type: "github",
         url: "https://github.com/d-vale/harvard_cs50",
         label: "Repository GitHub",
