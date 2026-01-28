@@ -228,4 +228,57 @@ export const projectsData = [
       },
     ],
   },
+  {
+    id: 8,
+    slug: "olympics-milano-cortina-2026",
+    src: "/images/projects/milano_cortina/landing.jpg",
+    images: [
+      "/images/projects/milano_cortina/mockup1.jpg",
+      "/images/projects/milano_cortina/mockup2.jpg",
+    ],
+    category: ["Développement", "UI/UX"],
+    title: "Olympics Milano-Cortina 2026",
+    description: `Dans le cadre d'un cours à option d'éco-conception à la HEIG-VD, ce projet académique m'a permis d'acquérir une nouvelle vision sur l'impact environnemental du développement web et d'adopter une approche responsable et durable dans la conception numérique.
+    
+    Contexte et objectifs
+    Le site officiel des Jeux Olympiques d'hiver Milano Cortina 2026 présentait une consommation énergétique importante due à des contenus répétitifs, des pages visuellement surchargées et un poids élevé. Notre objectif était de proposer une méthode d'optimisation complète en supprimant, réduisant et synthétisant les contenus pour rendre le site plus minimaliste, sobre et performant.
+    Nous avons concentré notre travail sur trois types de pages stratégiques : la Homepage (point d'entrée principal), le template Territoire et le template Actualité. Ce choix s'explique par l'effet multiplicateur de l'optimisation des templates : chaque amélioration se répercute automatiquement sur toutes les pages qui les utilisent, offrant ainsi un meilleur retour sur investissement qu'une optimisation de pages uniques.
+    
+    Méthodologie en 4 phases
+    Le projet s'est structuré autour d'une méthodologie rigoureuse  :
+    - Phase 1 – Analyse des contenus : Identification des contenus lourds, redondants ou inutiles, étude des intégrations externes et comparaison des différents templates.
+    - Phase 2 – Schémas et unification : Création de schémas visualisant l'état actuel, mise en évidence des variations entre templates et déduction d'une structure simplifiée et unifiée.
+    - Phase 3 – Maquettes minimalistes : Conception de maquettes optimisées pour chaque type de page avec un choix rigoureux des formats et de l'encodage des médias.
+    - Phase 4 – Implémentation et évaluation : Développement des pages optimisées avec Vue.js et Nuxt, accompagné d'une réflexion sur le processus de création.
+    
+    Principes d'optimisation appliqués
+    Les modifications générales appliquées à toutes les pages incluent la suppression des backgrounds décoratifs complexes, la réduction des éléments affichés simultanément, le remplacement des images lourdes par des formats WebP optimisés selon la taille d'écran, et la suppression des carrousels au profit d'images uniques. Nous avons également remplacé les icônes PNG/JPEG par des SVG vectoriels, harmonisé les composants entre pages, supprimé les CTA redondants et simplifié les intégrations externes lourdes.
+    
+    Technologies utilisées
+    Le projet a été développé avec Vue.js pour sa capacité à créer des composants réutilisables, TailwindCSS comme framework CSS pour son optimisation et sa popularité actuelle, et Nuxt pour le rendu côté serveur (SSR) permettant d'optimiser le chargement des médias et d'améliorer significativement le référencement SEO.
+    
+    Résultats mesurables
+    Les améliorations sont spectaculaires selon les mesures Eco-index :
+    - Homepage : passage d'un score G (6/100) à D (46/100), réduction du poids de 6.944 Mo à 1.146 Mo, diminution de 2687 à 661 éléments DOM et de 254 à 97 requêtes
+    - Template Territoire : passage d'un score F (13/100) à B (72/100), réduction du poids de 7.355 Mo à 0.815 Mo, diminution de 1313 à 358 éléments et de 214 à 41 requêtes
+    - Template Actualité : passage d'un score F à C (66/100), réduction du poids à 0.393 Mo, 443 éléments et 61 requêtes
+    
+    Ce projet illustre concrètement comment allier performance technique, expérience utilisateur optimale et responsabilité environnementale dans le développement web moderne.`,
+    year: 2026,
+    client: "Olympics Milano-Cortina 2026",
+    projectType: "Projet académique",
+    color: "#01647C",
+    links: [
+      {
+        type: "site",
+        url: "https://op-ecoc.onrender.com/",
+        label: "Accéder au site",
+      },
+      {
+        type: "github",
+        url: "https://github.com/d-vale/OP-EcoC",
+        label: "Repo GitHub",
+      },
+    ],
+  },
 ];
