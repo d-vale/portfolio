@@ -1,3 +1,5 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/d-vale/portfolio)
+
 # 🎨 Portfolio Daniel Vale
 
 Portfolio personnel développé avec Next.js et React, mettant en valeur mes projets, expériences et compétences dans le développement web et l'ingénierie des médias.
