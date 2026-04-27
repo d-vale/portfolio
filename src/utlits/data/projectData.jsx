@@ -137,12 +137,6 @@ export const projectsData = [
         url: "https://www.youtube.com/watch?v=3oFAJtFE8YU&t=1s",
         label: "Présentation CS50",
       },
-
-      /*       {
-        type: "certificate",
-        url: "https://edx.org/certificate/abc123",
-        label: "Certificat",
-      }, */
     ],
   },
   {
@@ -280,5 +274,42 @@ export const projectsData = [
         label: "Repo GitHub",
       },
     ],
+  },
+  {
+    id: 9,
+    slug: "yuh-for-you",
+    src: "/images/projects/yuh/landing.png",
+    images: [
+      "/images/projects/yuh/photo1.png",
+      "/images/projects/yuh/photo2.png",
+      "/images/projects/yuh/photo3.png",
+      "/images/projects/yuh/photo4.png",
+    ],
+    category: ["Marketing", "Communication", "UI/UX"],
+    title: "Yuh for You",
+    description: `Dans le cadre de notre dernier projet d'intégration à la HEIG-VD, notre équipe a travaillé sur un mandat pour Yuh, la néobanque suisse issue du partenariat entre Swissquote et PostFinance. Trois semaines pour analyser une marque digitale, identifier ses angles morts et proposer une stratégie complète — un exercice qui m'a permis de combiner réflexion stratégique, conception de concept et travail en équipe pluridisciplinaire.
+    
+    Contexte et problématique
+    Yuh est aujourd'hui une néobanque performante, moderne et intuitive. Mais en concentrant l'essentiel de sa communication sur les jeunes adultes, elle se prive d'un potentiel d'audience important parmi tous les Suisses qui cherchent simplement une banque simple et accessible. Plus profondément, son caractère 100 % digital pose un défi structurel : sans présence physique, comment créer le lien émotionnel nécessaire à la confiance ? Et sans confiance, pas de conversion. C'est cette double tension — élargir l'audience et bâtir la confiance — qui a guidé toute notre stratégie.
+    
+    Notre approche en deux axes
+    - Premier axe, élargir la communication : Adapter le ton et les messages pour parler à l'ensemble des Suisses qui veulent une banque simple, et non plus seulement à une cible jeune. Cela passe par une présence sur les médias traditionnels, l'affichage urbain et le digital, pour une couverture cohérente avec une audience élargie.
+    - Second axe, matérialiser l'immatériel : C'est le cœur de notre proposition. Donner un corps physique à une marque entièrement digitale pour ancrer Yuh dans le réel et créer cette confiance qui manque structurellement aux néobanques.
+    
+    Le concept : trois pop-ups et la Yuh Station
+    Le dispositif s'articule autour de trois espaces physiques, chacun pensé pour un moment d'engagement différent :
+    - Yuh Corner : un format compact installé sur des points de passage à fort trafic, pensé pour capter l'attention et déclencher la curiosité.
+    - Yuh Lounge : un espace de pause où découvrir l'univers Yuh dans une atmosphère détendue.
+    - Yuh Experience : un lieu immersif dédié aux événements, démonstrations et activations de marque.
+    
+    Au centre de chaque espace, une borne : la Yuh Station. C'est la pièce maîtresse du concept. Elle capte l'attention sans forcer, propose des interactions personnalisées qui créent de l'engagement, distribue physiquement la carte Yuh pour transformer la curiosité en action, et finalise un onboarding 100 % digital directement sur place. En quelques minutes, un passant devient client.
+    
+    Apports et conclusion
+    Matérialiser l'immatériel, c'est donner un corps à une marque digitale, transformer une application en expérience humaine, et construire la confiance là où elle manque le plus : dans la vraie vie. Au-delà du livrable final, ce projet m'a appris à mener une réflexion stratégique complète, depuis le diagnostic d'une marque jusqu'à la matérialisation d'un concept activable, en restant aligné avec une équipe pluridisciplinaire de huit personnes.`,
+    year: 2026,
+    client: "Yuh",
+    projectType: "Projet académique",
+    color: "#EBDDF5",
+    links: [],
   },
 ];
