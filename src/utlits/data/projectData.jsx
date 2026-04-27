@@ -102,7 +102,7 @@ export const projectsData = [
   },
   {
     id: 5,
-    slug: "cs50-introduction",
+    slug: "cs50-cs",
     src: "/images/projects/cs50_cs/course_logo.jpg",
     images: [
       "/images/projects/cs50_cs/homepage.jpg",
@@ -110,8 +110,17 @@ export const projectsData = [
     ],
     category: ["Développement"],
     title: "CS50's Introduction to CS",
-    description:
-      "Ma curiosité d'approfondir mes connaissances et de découvrir de nouvelles approches pédagogiques m'a poussé à suivre le célèbre cours CS50 de Harvard. J'ai documenté l'intégralité de mon parcours dans un dépôt GitHub où vous pourrez suivre ma progression et découvrir les compétences acquises. Cette formation solide me prépare idéalement pour mon futur Master HEC en systèmes d'information.",
+    description: `Description
+    Le célèbre cours CS50 du Pr. David J. Malan est largement considéré comme l'une des meilleures introductions à l'informatique au monde. Curieux de consolider mes fondamentaux au-delà du programme HEIG-VD et d'expérimenter une autre approche pédagogique, je me suis lancé dans cette formation en parallèle de mon cursus régulier.
+
+    Programme et compétences
+    CS50x couvre les piliers de l'informatique sur dix semaines, en passant délibérément du bas niveau vers le haut niveau pour donner une vision complète de la pile technique : abstraction et logique algorithmique avec Scratch, programmation système en C (pointeurs, gestion mémoire, structures de données), algorithmes classiques (tri, recherche, analyse de complexité), Python pour le code applicatif, SQL pour la manipulation de données, HTML/CSS/JavaScript pour le web, Flask pour les applications full-stack, et une introduction à la cybersécurité. Chaque semaine combine cours, exercices et un problem set qui force à appliquer les concepts dans un cas concret.
+
+    Ma méthode de travail
+    Plutôt que de me contenter de suivre les vidéos, j'ai choisi de documenter chaque semaine dans un dépôt GitHub structuré : notes détaillées au format Markdown, code source de tous les exercices et corrections des problem sets. Cette discipline de prise de notes, bien au-delà du simple suivi du cours, me permet de revenir facilement sur des concepts précis et de constituer une référence personnelle réutilisable, que ce soit dans mes projets HEIG-VD ou plus tard.
+
+    Apports
+    Au-delà des compétences techniques, CS50x apporte quelque chose de plus rare : une vision unifiée de l'informatique, du transistor jusqu'au déploiement web. C'est exactement le bagage que je voulais solidifier avant de rejoindre le Master HEC en systèmes d'information à l'UNIL.`,
     year: 2025,
     client: "EDX HarvardX",
     projectType: "Self Learning",
@@ -124,13 +133,13 @@ export const projectsData = [
       },
       {
         type: "github",
-        url: "https://github.com/d-vale/harvard_cs50",
+        url: "https://github.com/d-vale/CS50_introduction-to-CS",
         label: "Repository GitHub",
       },
       {
         type: "site",
         url: "https://cs50.harvard.edu/x/",
-        label: "Site de CS50",
+        label: "Site de CS50x",
       },
       {
         type: "video",
@@ -287,10 +296,10 @@ export const projectsData = [
     ],
     category: ["Marketing", "Communication", "UI/UX"],
     title: "Yuh for You",
-    description: `Dans le cadre de notre dernier projet d'intégration à la HEIG-VD, notre équipe a travaillé sur un mandat pour Yuh, la néobanque suisse issue du partenariat entre Swissquote et PostFinance. Trois semaines pour analyser une marque digitale, identifier ses angles morts et proposer une stratégie complète — un exercice qui m'a permis de combiner réflexion stratégique, conception de concept et travail en équipe pluridisciplinaire.
+    description: `Dans le cadre de notre dernier projet d'intégration à la HEIG-VD, notre équipe a travaillé sur un mandat pour Yuh, la néobanque suisse issue du partenariat entre Swissquote et PostFinance. Trois semaines pour analyser une marque digitale, identifier ses angles morts et proposer une stratégie complète, un exercice qui m'a permis de combiner réflexion stratégique, conception de concept et travail en équipe pluridisciplinaire.
     
     Contexte et problématique
-    Yuh est aujourd'hui une néobanque performante, moderne et intuitive. Mais en concentrant l'essentiel de sa communication sur les jeunes adultes, elle se prive d'un potentiel d'audience important parmi tous les Suisses qui cherchent simplement une banque simple et accessible. Plus profondément, son caractère 100 % digital pose un défi structurel : sans présence physique, comment créer le lien émotionnel nécessaire à la confiance ? Et sans confiance, pas de conversion. C'est cette double tension — élargir l'audience et bâtir la confiance — qui a guidé toute notre stratégie.
+    Yuh est aujourd'hui une néobanque performante, moderne et intuitive. Mais en concentrant l'essentiel de sa communication sur les jeunes adultes, elle se prive d'un potentiel d'audience important parmi tous les Suisses qui cherchent simplement une banque simple et accessible. Plus profondément, son caractère 100 % digital pose un défi structurel : sans présence physique, comment créer le lien émotionnel nécessaire à la confiance ? Et sans confiance, pas de conversion. C'est cette double tension, élargir l'audience et bâtir la confiance, qui a guidé toute notre stratégie.
     
     Notre approche en deux axes
     - Premier axe, élargir la communication : Adapter le ton et les messages pour parler à l'ensemble des Suisses qui veulent une banque simple, et non plus seulement à une cible jeune. Cela passe par une présence sur les médias traditionnels, l'affichage urbain et le digital, pour une couverture cohérente avec une audience élargie.
@@ -311,5 +320,52 @@ export const projectsData = [
     projectType: "Projet académique",
     color: "#EBDDF5",
     links: [],
+  },
+  {
+    id: 10,
+    slug: "cs50-python",
+    src: "/images/projects/cs50_python/landing.jpg",
+    images: [
+      "/images/projects/cs50_python/photo1.jpg",
+      "/images/projects/cs50_python/photo2.jpg",
+
+    ],
+    category: ["Développement"],
+    title: "CS50's Introduction to Programming with Python",
+    description: `Description
+    Suite naturelle de CS50x dans la lignée des cours Harvard en ligne, CS50P est une introduction approfondie à Python pensée pour ceux qui veulent maîtriser le langage au-delà de la syntaxe. Je me suis lancé dans cette formation pour consolider mes bases en Python, un langage devenu central dans mon profil technique et préparer le terrain de mon travail de bachelor.
+
+    Programme et compétences
+    Le cours s'étale sur neuf semaines et couvre l'essentiel du Python moderne : fonctions, variables et types ; structures de contrôle (conditionnelles, boucles) ; gestion des exceptions ; utilisation et création de bibliothèques ; tests unitaires avec pytest ; manipulation de fichiers (CSV, JSON, images) ; expressions régulières ; programmation orientée objet ; et un module final ouvert sur les sujets avancés (APIs, sets, interfaces graphiques, packaging). Chaque semaine se termine par un problem set qui pousse à écrire du code propre, testé et lisible, exactement la rigueur attendue en environnement professionnel.
+
+    Ma méthode de travail
+    Comme pour CS50x, j'ai documenté l'intégralité de mon parcours dans un dépôt GitHub : notes structurées par semaine, code source et solutions des problem sets. Cette approche méthodique me permet de constituer une référence personnelle solide, bien au-delà du simple suivi des leçons.
+
+    Projet final
+    Pour le projet final, j'ai choisi de construire un outil réutilisable plutôt qu'un exercice purement scolaire : ImmoScope, un analyseur de portefeuille immobilier en ligne de commande. C'était l'occasion de mettre en pratique l'ensemble des concepts du cours packaging, tests, gestion d'exceptions, manipulation de données, génération de PDF sur un cas d'usage concret.
+
+    Apports
+    CS50P m'a apporté ce que j'attendais : une vraie rigueur dans l'écriture de code Python (typage, tests, documentation) que les cursus traditionnels n'ont pas toujours le temps d'enseigner en profondeur. Un acquis directement utile pour la suite, et notamment pour mon travail de bachelor.`,
+    year: 2026,
+    client: "EDX HarvardX",
+    projectType: "Self Learning",
+    color: "#FFE700",
+    links: [
+      {
+        type: "certificate",
+        url: "https://certificates.cs50.io/39b7a142-37f6-459d-915a-6c194a8a77bf.pdf?size=letter",
+        label: "Certificat",
+      },
+      {
+        type: "github",
+        url: "https://github.com/d-vale/CS50_introduction-Python",
+        label: "Repository GitHub",
+      },
+      {
+        type: "site",
+        url: "https://cs50.harvard.edu/python/",
+        label: "Site de CS50 Python",
+      },
+    ],
   },
 ];
