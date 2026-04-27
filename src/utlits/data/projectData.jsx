@@ -331,7 +331,7 @@ export const projectsData = [
 
     ],
     category: ["Développement"],
-    title: "CS50's Introduction to Programming with Python",
+    title: "CS50's Introduction to Python",
     description: `Description
     Suite naturelle de CS50x dans la lignée des cours Harvard en ligne, CS50P est une introduction approfondie à Python pensée pour ceux qui veulent maîtriser le langage au-delà de la syntaxe. Je me suis lancé dans cette formation pour consolider mes bases en Python, un langage devenu central dans mon profil technique et préparer le terrain de mon travail de bachelor.
 

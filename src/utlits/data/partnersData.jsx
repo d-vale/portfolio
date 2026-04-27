@@ -24,4 +24,9 @@ export const partnersData = [
     logo: "/images/client-logos/cablex.png",
     height: 20,
   },
+  {
+    name: "Yuh",
+    logo: "/images/client-logos/yuh.png",
+    height: 42,
+  },
 ];
