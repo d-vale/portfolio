@@ -332,8 +332,7 @@ export const projectsData = [
     ],
     category: ["Développement"],
     title: "CS50's Introduction to Python",
-    description: `Description
-    Suite naturelle de CS50x dans la lignée des cours Harvard en ligne, CS50P est une introduction approfondie à Python pensée pour ceux qui veulent maîtriser le langage au-delà de la syntaxe. Je me suis lancé dans cette formation pour consolider mes bases en Python, un langage devenu central dans mon profil technique et préparer le terrain de mon travail de bachelor.
+    description: `Suite naturelle de CS50x dans la lignée des cours Harvard en ligne, CS50P est une introduction approfondie à Python pensée pour ceux qui veulent maîtriser le langage au-delà de la syntaxe. Je me suis lancé dans cette formation pour consolider mes bases en Python, un langage devenu central dans mon profil technique et préparer le terrain de mon travail de bachelor.
 
     Programme et compétences
     Le cours s'étale sur neuf semaines et couvre l'essentiel du Python moderne : fonctions, variables et types ; structures de contrôle (conditionnelles, boucles) ; gestion des exceptions ; utilisation et création de bibliothèques ; tests unitaires avec pytest ; manipulation de fichiers (CSV, JSON, images) ; expressions régulières ; programmation orientée objet ; et un module final ouvert sur les sujets avancés (APIs, sets, interfaces graphiques, packaging). Chaque semaine se termine par un problem set qui pousse à écrire du code propre, testé et lisible, exactement la rigueur attendue en environnement professionnel.
@@ -365,6 +364,44 @@ export const projectsData = [
         type: "site",
         url: "https://cs50.harvard.edu/python/",
         label: "Site de CS50 Python",
+      },
+    ],
+  },
+  {
+    id: 11,
+    slug: "biip",
+    src: "/images/projects/biip/homepage.jpg",
+    images: [
+      "/images/projects/biip/mockup.jpg",
+      "/images/projects/biip/rapport.jpg",
+
+    ],
+    category: ["Développement", "UI/UX"],
+    title: "Portail investisseur BIIP",
+    description: `Pour mon travail de bachelor, j'ai conçu et développé le portail investisseur de BIIP. Bobst Régie Immobilière SA est une régie familiale d'Yverdon-les-Bains active depuis plusieurs décennies dans la gérance et le courtage. Avec BIIP, pour Bobst Investissement Immobilier Participatif, elle propose à des particuliers de devenir copropriétaires d'immeubles de rendement en prenant des parts dans des sociétés immobilières qu'elle sélectionne, acquiert et administre ensuite au quotidien. L'investisseur apporte son capital, la régie apporte son expertise, son parc et sa gestion. Avant ce projet, ces investisseurs recevaient leurs rapports par courriel et devaient reconstituer eux-mêmes la performance de leur placement. Je leur ai construit un espace personnel où ils retrouvent leur portefeuille, les indicateurs de chaque immeuble et leurs documents administratifs, ainsi qu'un back-office pour l'équipe de la régie.
+
+    J'ai mené le projet seul, du premier entretien avec le mandant jusqu'à la livraison : recherche utilisateur, benchmark, spécifications, maquettes, développement fullstack et documentation. Travailler sur un mandat client réel change la nature des décisions. La régie a son écosystème logiciel, ses habitudes et ses priorités, et la solution devait s'y intégrer sans le perturber. Chaque choix technique s'est donc construit avec ces contraintes plutôt que contre elles, et j'ai appris à les argumenter auprès de quelqu'un qui n'est pas développeur.
+
+    La vraie difficulté a été d'apprendre un métier que je ne connaissais pas. L'immobilier a son vocabulaire et sa logique : état locatif, vacance, rendement par action, société immobilière, charges d'exploitation. J'ai passé les premières semaines à poser des questions et à me constituer un glossaire avant de pouvoir modéliser quoi que ce soit. Cette compréhension métier a conditionné tout le reste, notamment le travail d'arbitrage sur les données : décider quoi montrer à un investisseur qui n'est pas un professionnel de la finance, et écarter certains indicateurs pourtant disponibles parce qu'ils risquaient d'induire en erreur.
+
+    Ce projet m'a appris à travailler avec un client sur la durée, à documenter mes décisions pour qu'elles survivent à mon départ, et à livrer quelque chose dont je reste responsable. Bobst m'a engagé à l'issue du travail pour mettre la plateforme en production.
+    
+    ⚠️ Ce projet porte sur des données financières confidentielles. Les visuels présentés utilisent un jeu de données fictif et le code source reste privé. Contactez-moi pour en discuter.
+    `,
+    year: 2026,
+    client: "Bobst Régie Immobilière SA",
+    projectType: "Travail de bachelor",
+    color: "#348BCB",
+    links: [
+      {
+        type: "site",
+        url: "https://www.biip.ch/",
+        label: "Site BIIP",
+      },
+      {
+        type: "site",
+        url: "https://bobst-immobilier.ch/",
+        label: "Site Bobst Régie Immobilière",
       },
     ],
   },
