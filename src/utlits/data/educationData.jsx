@@ -1,7 +1,7 @@
 const educationData = [
   {
     id: 1,
-    year: "2023 - Présent",
+    year: "2023 - 2026",
     title: "Bachelor ingénierie des médias",
     institution: "HEIG-VD",
     icon: "/images/about/education_logo/heig.png",

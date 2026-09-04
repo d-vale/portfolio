@@ -66,7 +66,11 @@ const Card = ({ year, title, institution, icon }) => {
             <img
               src={icon}
               alt={title}
-              style={{ width: "24px", height: "24px" }}
+              style={{
+                width: "24px",
+                height: "24px",
+                objectFit: "contain",
+              }}
             />
           ) : (
             React.createElement(icon || RiBookLine)

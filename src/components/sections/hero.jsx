@@ -23,7 +23,7 @@ const Hero = () => {
               <div className="about-image-part">
                 <img src={"/images/about/profile.jpg"} alt="About Me" />
                 <h2>Daniel Vale</h2>
-                <p>Étudiant en ingénierie des médias 💻</p>
+                <p>Software Engineer 💻</p>
                 <div className="about-social text-center">
                   <ul>
                     <li>

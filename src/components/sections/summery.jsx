@@ -14,7 +14,7 @@ const Summery = () => {
               <div className="about-image-part">
                 <img src={"/images/about/profile.jpg"} alt="About Me" />
                 <h2>Daniel Vale</h2>
-                <p>Étudiant ingénieur des médias 💻</p>
+                <p>Software Engineer 💻</p>
                 <div className="about-social text-center">
                   <ul>
                     <li>
@@ -48,11 +48,12 @@ const Summery = () => {
                   exercer comme métier.
                 </p>
                 <p>
-                  Grâce à ma formation de médiamaticien et mon bachelor en
-                  ingénierie des médias, je peux non seulement développer des
-                  solutions digitales, mais aussi les concevoir, les gérer et
-                  les promouvoir. Mon profil à la fois technique et commercial
-                  est un véritable atout dans mon domaine.
+                  Aujourd'hui software engineer, fort de ma formation de
+                  médiamaticien et de mon bachelor en ingénierie des médias, je
+                  peux non seulement développer des solutions digitales, mais
+                  aussi les concevoir, les gérer et les promouvoir. Mon profil à
+                  la fois technique et commercial est un véritable atout dans
+                  mon domaine.
                 </p>
                 <p>
                   J'aime me surpasser et apprendre constamment de nouvelles

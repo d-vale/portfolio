@@ -34,7 +34,7 @@ const ContactOption = () => {
                             </div>
                             <h2>Email :</h2>
                             <p>
-                                <a href="mailto:daniel.pintovale@heig-vd.ch">daniel.pintovale@heig-vd.ch</a>
+                                <a href="mailto:dpv@bobst-immobilier.ch">dpv@bobst-immobilier.ch</a>
                             </p>
                         </div>
                     </SlideUp>
