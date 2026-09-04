@@ -56,10 +56,10 @@ const Hero = () => {
                 <div className="adress-field">
                   <ul>
                     <li className="d-flex align-items-center">
-                      <i style={{ color: 'var(--primary-color)' }}>
+                      <i style={{ color: '#22c55e' }}>
                         <RiCircleFill size={14} />
                       </i>{" "}
-                      Travail de bachelor en cours ...
+                      Disponible
                     </li>
                   </ul>
                 </div>

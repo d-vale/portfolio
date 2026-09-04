@@ -29,4 +29,9 @@ export const partnersData = [
     logo: "/images/client-logos/yuh.png",
     height: 42,
   },
+  {
+    name: "Bobst Régie Immobilière SA",
+    logo: "/images/client-logos/bobst.png",
+    height: 32,
+  },
 ];
