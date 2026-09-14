@@ -274,7 +274,7 @@ export const projectsData = [
     links: [
       {
         type: "site",
-        url: "https://op-ecoc.onrender.com/",
+        url: "https://op-ecoc-lxmm.onrender.com/",
         label: "Accéder au site",
       },
       {
