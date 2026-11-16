@@ -127,8 +127,6 @@ const Portfolio = ({ className = "" }) => {
           height: nextHeight,
           duration: 0.8,
           ease: "expo.inOut",
-          clearProps: "height",
-          onComplete: () => ScrollTrigger.refresh(),
         }
       );
 
@@ -137,6 +135,12 @@ const Portfolio = ({ className = "" }) => {
         ease: "expo.inOut",
         absolute: true,
         stagger: 0.025,
+        // La hauteur reste fixée tant que les cartes sont en position absolue,
+        // sinon la grille s'effondre un instant et le bas de page remonte derrière
+        onComplete: () => {
+          gsap.set(el, { clearProps: "height" });
+          ScrollTrigger.refresh();
+        },
         onEnter: (elements) =>
           gsap.fromTo(
             elements,
@@ -221,7 +225,6 @@ const Card = ({ project, hidden }) => {
           href={`/projet/${slug}`}
           label={title}
           className="project-item style-two"
-          data-cursor-label="Voir"
           style={color ? { "--project-color": color } : undefined}
         >
           <div className="project-image">

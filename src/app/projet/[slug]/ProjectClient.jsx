@@ -339,7 +339,6 @@ export default function ProjectClient({ project, next }) {
                       type="button"
                       className="image-container"
                       onClick={() => openLightbox(idx)}
-                      data-cursor-label="Agrandir"
                       aria-label={`Agrandir l'image ${idx + 1} sur ${images.length}`}
                     >
                       <Image
@@ -367,7 +366,6 @@ export default function ProjectClient({ project, next }) {
                 href={`/projet/${next.slug}`}
                 label={next.title}
                 className="next-project"
-                data-cursor-label="Suivant"
               >
                 <span className="next-project__kicker">Projet suivant</span>
                 <span className="next-project__title">

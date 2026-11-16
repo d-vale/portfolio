@@ -5,7 +5,6 @@ import CallToAction from "@/components/sections/callToAction";
 import Footer from "@/components/sections/footer";
 import MotionProvider from "@/components/motion/MotionProvider";
 import PageTransition from "@/components/motion/PageTransition";
-import Cursor from "@/components/motion/Cursor";
 import Ambient from "@/components/motion/Ambient";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 
@@ -36,7 +35,6 @@ export default function RootLayout({ children }) {
           <CallToAction />
           <Footer />
           <PageTransition />
-          <Cursor />
         </MotionProvider>
       </body>
     </html>
