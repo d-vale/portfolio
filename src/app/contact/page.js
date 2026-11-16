@@ -1,6 +1,8 @@
 import React from 'react'
 import ContactOption from '../../components/sections/contact/contactOption'
 import ContactForm from '../../components/sections/contact/contactForm'
+import Reveal from '@/components/motion/Reveal'
+import SplitReveal from '@/components/motion/SplitReveal'
 
 const Contact = () => {
   return (
@@ -9,9 +11,13 @@ const Contact = () => {
         <div className="container-inner">
           <div className="row">
             <div className="col-xl-12 col-lg-12">
-              <div className="section-title text-center wow fadeInUp delay-0-2s">
-                <p>Contact</p>
-                <h2>Contactez-moi !</h2>
+              <div className="section-title text-center">
+                <Reveal>
+                  <p>Contact</p>
+                </Reveal>
+                <SplitReveal as="h2" by="chars">
+                  Contactez-moi !
+                </SplitReveal>
               </div>
             </div>
           </div>

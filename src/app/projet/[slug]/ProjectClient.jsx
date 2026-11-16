@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   RiCloseLine,
   RiArrowLeftSLine,
   RiArrowRightSLine,
+  RiArrowRightUpLine,
   RiGithubFill,
   RiGlobalLine,
   RiFileTextLine,
@@ -13,241 +14,410 @@ import {
   RiVideoLine,
   RiLinkedinLine,
 } from "@remixicon/react";
+import Reveal from "@/components/motion/Reveal";
+import SplitReveal from "@/components/motion/SplitReveal";
+import TransitionLink from "@/components/motion/TransitionLink";
+import { useMotion } from "@/components/motion/MotionProvider";
+import { gsap, useGSAP } from "@/lib/gsap";
 
-export default function ProjectClient({ project }) {
+// Luminance relative d'une couleur hexadécimale (#rgb ou #rrggbb)
+const isLightColor = (hex) => {
+  const value = hex.replace("#", "");
+  const full = value.length === 3 ? value.replace(/./g, "$&$&") : value;
+  const [r, g, b] = [0, 2, 4].map((i) => {
+    const c = parseInt(full.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.45;
+};
+
+const ICONS = {
+  github: RiGithubFill,
+  figma: RiFigmaLine,
+  website: RiGlobalLine,
+  certificate: RiAwardLine,
+  video: RiVideoLine,
+  linkedin: RiLinkedinLine,
+  file: RiFileTextLine,
+};
+
+export default function ProjectClient({ project, next }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const root = useRef(null);
+  const lightbox = useRef(null);
+  const opener = useRef(null);
+  const { ready, reduced, lenisRef } = useMotion();
 
+  const images = project.images || [];
+  const categories = Array.isArray(project.category)
+    ? project.category
+    : [project.category];
+
+  // Couleur d'accent du projet
   useEffect(() => {
+    const style = document.documentElement.style;
     if (project?.color) {
-      document.documentElement.style.setProperty(
-        "--primary-color",
-        project.color
-      );
-      return () =>
-        document.documentElement.style.setProperty(
-          "--primary-color",
-          "#ba0000"
-        );
+      style.setProperty("--primary-color", project.color);
+      // Texte sombre sur les couleurs d'accent claires (lisibilité des boutons)
+      style.setProperty("--on-primary", isLightColor(project.color) ? "#111" : "#fff");
+    } else {
+      style.removeProperty("--primary-color");
+      style.removeProperty("--on-primary");
     }
+    return () => {
+      style.removeProperty("--primary-color");
+      style.removeProperty("--on-primary");
+    };
   }, [project]);
 
-  // Fermer la lightbox avec la touche Escape
+  const navigateImage = useCallback(
+    (direction) => {
+      if (!images.length) return;
+      setCurrentImageIndex((prev) =>
+        direction === "next"
+          ? (prev + 1) % images.length
+          : (prev - 1 + images.length) % images.length
+      );
+    },
+    [images.length]
+  );
+
+  const closeLightbox = useCallback(() => {
+    const el = lightbox.current;
+    if (!el || reduced) {
+      setLightboxOpen(false);
+      return;
+    }
+    gsap.to(el, {
+      autoAlpha: 0,
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: () => setLightboxOpen(false),
+    });
+  }, [reduced]);
+
+  // Lightbox : clavier + blocage du scroll (Lenis)
   useEffect(() => {
+    if (!lightboxOpen) return;
+    const lenis = lenisRef.current;
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        setLightboxOpen(false);
-      }
-      if (e.key === "ArrowLeft") {
-        navigateImage("prev");
-      }
-      if (e.key === "ArrowRight") {
-        navigateImage("next");
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") navigateImage("prev");
+      if (e.key === "ArrowRight") navigateImage("next");
+      if (e.key === "Tab") {
+        // Le focus reste dans la galerie tant qu'elle est ouverte
+        const el = lightbox.current;
+        const focusable = el ? el.querySelectorAll("button") : [];
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!el.contains(document.activeElement)) {
+          e.preventDefault();
+          first.focus();
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
-
-    if (lightboxOpen) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    }
-
+    document.addEventListener("keydown", handleKeyDown);
+    document.documentElement.classList.add("lightbox-open");
+    if (lenis) lenis.stop();
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
+      document.documentElement.classList.remove("lightbox-open");
+      if (lenis) lenis.start();
+      if (opener.current && opener.current.focus) opener.current.focus();
     };
-  }, [lightboxOpen]);
+  }, [lightboxOpen, lenisRef, closeLightbox, navigateImage]);
+
+  // Ouverture de la lightbox
+  useGSAP(
+    () => {
+      if (!lightboxOpen || reduced || !lightbox.current) return;
+      gsap.fromTo(lightbox.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 });
+      gsap.fromTo(
+        ".lightbox-container",
+        { scale: 0.9, y: 30 },
+        { scale: 1, y: 0, duration: 0.7, ease: "expo.out" }
+      );
+    },
+    { dependencies: [lightboxOpen, reduced] }
+  );
+
+  // Fondu à chaque changement d'image
+  useGSAP(
+    () => {
+      if (!lightboxOpen || reduced || !lightbox.current) return;
+      gsap.fromTo(
+        ".lightbox-image img",
+        { autoAlpha: 0, scale: 0.97 },
+        { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }
+      );
+    },
+    { dependencies: [currentImageIndex] }
+  );
+
+  // ----- Animations de la page
+  useGSAP(
+    () => {
+      if (!ready || reduced) return;
+
+      // Image de couverture : dévoilement puis parallaxe au scroll
+      gsap.fromTo(
+        ".single-project-image",
+        { clipPath: "inset(100% 0% 0% 0% round 28px)" },
+        {
+          clipPath: "inset(0% 0% 0% 0% round 28px)",
+          duration: 1.5,
+          ease: "expo.out",
+          delay: 0.35,
+        }
+      );
+      gsap.fromTo(
+        ".single-project-image img",
+        { yPercent: -7 },
+        {
+          yPercent: 7,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".single-project-image",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+
+      // Fiche d'informations : lignes en cascade
+      gsap.from(".single-info", {
+        opacity: 0,
+        x: -30,
+        duration: 0.9,
+        ease: "expo.out",
+        stagger: 0.1,
+        scrollTrigger: { trigger: ".single-project-page-left", start: "top 85%", once: true },
+      });
+
+      // Galerie : dévoilement par masque
+      gsap.utils.toArray(".image-container", root.current).forEach((item, i) => {
+        const img = item.querySelector("img");
+        const scrollTrigger = { trigger: item, start: "top 92%", once: true };
+        gsap.fromTo(
+          item,
+          { clipPath: "inset(100% 0% 0% 0% round 18px)" },
+          {
+            clipPath: "inset(0% 0% 0% 0% round 18px)",
+            duration: 1.3,
+            ease: "expo.out",
+            delay: (i % 2) * 0.12,
+            scrollTrigger,
+            clearProps: "clipPath",
+          }
+        );
+        gsap.fromTo(
+          img,
+          { scale: 1.35 },
+          {
+            scale: 1,
+            duration: 1.7,
+            ease: "expo.out",
+            delay: (i % 2) * 0.12,
+            scrollTrigger,
+            clearProps: "transform",
+          }
+        );
+      });
+    },
+    { scope: root, dependencies: [ready, reduced, project.slug], revertOnUpdate: true }
+  );
 
   const openLightbox = (index) => {
+    opener.current = document.activeElement;
     setCurrentImageIndex(index);
     setLightboxOpen(true);
   };
 
-  const closeLightbox = () => {
-    setLightboxOpen(false);
-  };
-
-  const navigateImage = (direction) => {
-    if (!project.images) return;
-
-    if (direction === "next") {
-      setCurrentImageIndex((prev) =>
-        prev === project.images.length - 1 ? 0 : prev + 1
-      );
-    } else {
-      setCurrentImageIndex((prev) =>
-        prev === 0 ? project.images.length - 1 : prev - 1
-      );
-    }
-  };
-
-  // Fonction pour obtenir l'icône appropriée
-  const getIcon = (type) => {
-    switch (type) {
-      case "github":
-        return <RiGithubFill size={24} />;
-      case "figma":
-        return <RiFigmaLine size={24} />;
-      case "website":
-        return <RiGlobalLine size={24} />;
-      case "certificate":
-        return <RiAwardLine size={24} />;
-      case "video":
-        return <RiVideoLine size={24} />;
-      case "linkedin":
-        return <RiLinkedinLine size={24} />;
-      case "file":
-        return <RiFileTextLine size={24} />;
-      default:
-        return <RiGlobalLine size={24} />;
-    }
-  };
-
   return (
     <>
-      <div className="single-project-page-design">
+      <div ref={root} className="single-project-page-design">
         <div className="container">
           <div className="row">
-            <div className="col-lg-12 text-center pb-30">
-              <p>
-                {Array.isArray(project.category)
-                  ? project.category.join(", ")
-                  : project.category}
-              </p>
-              <h1>{project.title}</h1>
+            <div className="col-lg-12 text-center pb-30 project-hero">
+              <Reveal>
+                <p className="project-hero__cats">{categories.join(", ")}</p>
+              </Reveal>
+              <SplitReveal as="h1" by="chars" delay={0.1}>
+                {project.title}
+              </SplitReveal>
             </div>
           </div>
         </div>
         {/* Image principale */}
-        <div className="single-project-image">
-          <Image
-            width={1095}
-            height={1072}
-            sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
-            src={project.src}
-            alt={project.title}
-          />
+        <div className="project-cover">
+          <div className="single-project-image">
+            <Image
+              width={1095}
+              height={1072}
+              sizes="100vw"
+              src={project.src}
+              alt={project.title}
+              priority
+            />
+          </div>
         </div>
         <div className="container pt-30">
           <div className="row">
             <div className="col-lg-4">
-              <div className="single-project-page-left wow fadeInUp delay-0-2s">
-                <div className="single-info">
-                  <p>Année</p>
-                  <h3>{project.year}</h3>
+              <Reveal className="project-sticky">
+                <div className="single-project-page-left">
+                  <div className="single-info">
+                    <p>Année</p>
+                    <h3>{project.year}</h3>
+                  </div>
+                  <div className="single-info">
+                    <p>Client</p>
+                    <h3>{project.client}</h3>
+                  </div>
+                  <div className="single-info">
+                    <p>Catégorie{categories.length > 1 ? "s" : ""}</p>
+                    <h3>{categories.join(", ")}</h3>
+                  </div>
+                  <div className="single-info">
+                    <p>Type de projet</p>
+                    <h3>{project.projectType}</h3>
+                  </div>
                 </div>
-                <div className="single-info">
-                  <p>Client</p>
-                  <h3>{project.client}</h3>
-                </div>
-                <div className="single-info">
-                  <p>
-                    Catégorie
-                    {Array.isArray(project.category) &&
-                    project.category.length > 1
-                      ? "s"
-                      : ""}
-                  </p>
-                  <h3>
-                    {Array.isArray(project.category)
-                      ? project.category.join(", ")
-                      : project.category}
-                  </h3>
-                </div>
-                <div className="single-info">
-                  <p>Type de projet</p>
-                  <h3>{project.projectType}</h3>
-                </div>
-              </div>
+              </Reveal>
             </div>
             <div className="col-lg-8">
-              <div className="single-project-page-right wow fadeInUp delay-0-4s">
-                <h2>Description</h2>
-                <p style={{ whiteSpace: 'pre-line' }}>{project.description}</p>
+              <Reveal delay={2}>
+                <div className="single-project-page-right">
+                  <h2>Description</h2>
+                  <p style={{ whiteSpace: "pre-line" }}>{project.description}</p>
 
-                {/* Section des liens */}
-                {project.links && project.links.length > 0 && (
-                  <div className="project-links">
-                    <div className="links-container">
-                      {project.links.map((link, index) => (
-                        <a
-                          key={index}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                          title={link.label}
-                        >
-                          <div className="link-icon">{getIcon(link.type)}</div>
-                          <span className="link-label">{link.label}</span>
-                        </a>
-                      ))}
+                  {/* Section des liens */}
+                  {project.links && project.links.length > 0 && (
+                    <div className="project-links">
+                      <div className="links-container">
+                        {project.links.map((link, index) => {
+                          const Icon = ICONS[link.type] || RiGlobalLine;
+                          return (
+                            <a
+                              key={index}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="project-link"
+                              title={link.label}
+                            >
+                              <div className="link-icon">
+                                <Icon size={24} />
+                              </div>
+                              <span className="link-label">{link.label}</span>
+                            </a>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
+              </Reveal>
             </div>
           </div>
           {/* Galerie dynamique d'images */}
-          <div className="row pt-30">
-            {project.images &&
-              project.images.map((img, idx) => (
+          {images.length > 0 && (
+            <div className="row pt-30">
+              {images.map((img, idx) => (
                 <div className="col-lg-6" key={idx}>
-                  <div
-                    className={`single-image wow fadeInUp delay-0-${
-                      (idx + 2) * 2
-                    }s`}
-                  >
-                    <div
+                  <div className="single-image">
+                    <button
+                      type="button"
                       className="image-container"
                       onClick={() => openLightbox(idx)}
-                      style={{ cursor: "pointer" }}
+                      data-cursor-label="Agrandir"
+                      aria-label={`Agrandir l'image ${idx + 1} sur ${images.length}`}
                     >
                       <Image
                         width={633}
                         height={679}
-                        sizes="100%"
+                        sizes="(min-width: 992px) 50vw, 100vw"
                         style={{ width: "100%", height: "auto" }}
                         src={img}
-                        alt={`gallery-${idx + 1}`}
+                        alt={`${project.title} — image ${idx + 1}`}
                       />
-                      <div className="image-overlay">
+                      <span className="image-overlay">
                         <span>Cliquer pour agrandir</span>
-                      </div>
-                    </div>
+                      </span>
+                    </button>
                   </div>
                 </div>
               ))}
-          </div>
+            </div>
+          )}
+
+          {/* Projet suivant */}
+          {next && (
+            <Reveal>
+              <TransitionLink
+                href={`/projet/${next.slug}`}
+                label={next.title}
+                className="next-project"
+                data-cursor-label="Suivant"
+              >
+                <span className="next-project__kicker">Projet suivant</span>
+                <span className="next-project__title">
+                  {next.title}
+                  <RiArrowRightUpLine aria-hidden="true" />
+                </span>
+              </TransitionLink>
+            </Reveal>
+          )}
         </div>
       </div>
 
       {/* Lightbox */}
-      {lightboxOpen && project.images && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
-          <div className="lightbox-container">
-            <button className="lightbox-close" onClick={closeLightbox}>
+      {lightboxOpen && images.length > 0 && (
+        <div
+          ref={lightbox}
+          className="lightbox-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Galerie du projet"
+          data-lenis-prevent
+          onClick={closeLightbox}
+        >
+          <div className="lightbox-container" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={closeLightbox}
+              aria-label="Fermer la galerie"
+              autoFocus
+            >
               <RiCloseLine size={30} />
             </button>
 
-            {project.images.length > 1 && (
+            {images.length > 1 && (
               <>
                 <button
+                  type="button"
                   className="lightbox-nav lightbox-prev"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigateImage("prev");
-                  }}
+                  onClick={() => navigateImage("prev")}
+                  aria-label="Image précédente"
                 >
                   <RiArrowLeftSLine size={30} />
                 </button>
 
                 <button
+                  type="button"
                   className="lightbox-nav lightbox-next"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigateImage("next");
-                  }}
+                  onClick={() => navigateImage("next")}
+                  aria-label="Image suivante"
                 >
                   <RiArrowRightSLine size={30} />
                 </button>
@@ -256,8 +426,8 @@ export default function ProjectClient({ project }) {
 
             <div className="lightbox-image">
               <Image
-                src={project.images[currentImageIndex]}
-                alt={`Gallery image ${currentImageIndex + 1}`}
+                src={images[currentImageIndex]}
+                alt={`${project.title} — image ${currentImageIndex + 1}`}
                 width={1200}
                 height={800}
                 style={{
@@ -270,9 +440,9 @@ export default function ProjectClient({ project }) {
               />
             </div>
 
-            {project.images.length > 1 && (
+            {images.length > 1 && (
               <div className="lightbox-counter">
-                {currentImageIndex + 1} / {project.images.length}
+                {currentImageIndex + 1} / {images.length}
               </div>
             )}
           </div>

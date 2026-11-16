@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
-import Link from "next/link";
 import { RiMailSendLine } from "@remixicon/react";
-import SlideUp from "@/utlits/animations/slideUp";
+import Reveal from "@/components/motion/Reveal";
+import SplitReveal from "@/components/motion/SplitReveal";
+import Magnetic from "@/components/motion/Magnetic";
+import TransitionLink from "@/components/motion/TransitionLink";
 
 const CallToAction = () => {
   return (
@@ -10,20 +13,25 @@ const CallToAction = () => {
         <div className="row">
           {/* <!-- START ABOUT TEXT DESIGN AREA --> */}
           <div className="col-lg-12">
-            <SlideUp>
+            <Reveal variant="scale">
               <div className="about-content-part call-to-action-part text-center">
-                <h2>Intéressé par mon profil ?</h2>
+                <span className="cta-glow" aria-hidden="true" />
+                <SplitReveal as="h2" mode="scrub">
+                  Intéressé par mon profil ?
+                </SplitReveal>
                 <p>Contactez-moi pour transformer vos idées en réalité.</p>{" "}
                 <div className="hero-btns">
-                  <Link href="/contact" className="theme-btn">
-                    Discutons-en{" "}
-                    <i>
-                      <RiMailSendLine size={16} />
-                    </i>
-                  </Link>
+                  <Magnetic strength={0.45}>
+                    <TransitionLink href="/contact" label="Contact" className="theme-btn theme-btn--lg">
+                      Discutons-en{" "}
+                      <i>
+                        <RiMailSendLine size={18} />
+                      </i>
+                    </TransitionLink>
+                  </Magnetic>
                 </div>
               </div>
-            </SlideUp>
+            </Reveal>
           </div>
           {/* <!-- / END ABOUT TEXT DESIGN AREA --> */}
         </div>

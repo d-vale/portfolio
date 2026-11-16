@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
-import { RiMailSendLine, RiLinkedinFill, RiGithubLine } from "@remixicon/react";
-import SlideUp from "@/utlits/animations/slideUp";
-import Link from "next/link";
+import { RiMailSendLine } from "@remixicon/react";
+import Reveal from "@/components/motion/Reveal";
+import SplitReveal from "@/components/motion/SplitReveal";
+import Magnetic from "@/components/motion/Magnetic";
+import TransitionLink from "@/components/motion/TransitionLink";
+import ProfileCard from "./profileCard";
 
 const Summery = () => {
   return (
@@ -10,35 +14,19 @@ const Summery = () => {
         <div className="row">
           {/* <!-- START ABOUT IMAGE DESIGN AREA --> */}
           <div className="col-lg-4">
-            <SlideUp>
-              <div className="about-image-part">
-                <img src={"/images/about/profile.jpg"} alt="About Me" />
-                <h2>Daniel Vale</h2>
-                <p>Software Engineer 💻</p>
-                <div className="about-social text-center">
-                  <ul>
-                    <li>
-                      <Link href="https://www.linkedin.com/in/danielvale050403/" target="_blank">
-                        <RiLinkedinFill size={20} />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="https://github.com/d-vale" target="_blank">
-                        <RiGithubLine size={20} />
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </SlideUp>
+            <Reveal className="h-100">
+              <ProfileCard />
+            </Reveal>
           </div>
           {/* <!-- / END ABOUT IMAGE DESIGN AREA -->
                     <!-- START ABOUT TEXT DESIGN AREA --> */}
           <div className="col-lg-8">
-            <SlideUp>
-              <div className="about-content-part">
-                <h2>Bonjour, moi c'est Daniel</h2>
-                <p>
+            <Reveal delay={2} className="h-100">
+              <div className="about-content-part about-bio h-100">
+                <SplitReveal as="h2" by="words" delay={0.3}>
+                  Bonjour, moi c'est Daniel
+                </SplitReveal>
+                <SplitReveal as="p" by="lines" delay={0.45}>
                   Dès mon plus jeune âge, je suis passionné par le
                   développement. Aujourd'hui, je me souviens encore des longues
                   négociations avec mes parents pour que je lâche mon
@@ -46,33 +34,34 @@ const Summery = () => {
                   vraiment fonctionné, mais heureusement pour moi, cette passion
                   est devenue une véritable vocation que je peux désormais
                   exercer comme métier.
-                </p>
-                <p>
+                </SplitReveal>
+                <SplitReveal as="p" by="lines" delay={0.55}>
                   Aujourd'hui software engineer, fort de ma formation de
                   médiamaticien et de mon bachelor en ingénierie des médias, je
                   peux non seulement développer des solutions digitales, mais
                   aussi les concevoir, les gérer et les promouvoir. Mon profil à
                   la fois technique et commercial est un véritable atout dans
                   mon domaine.
-                </p>
-                <p>
+                </SplitReveal>
+                <SplitReveal as="p" by="lines" delay={0.65}>
                   J'aime me surpasser et apprendre constamment de nouvelles
                   choses. L'utilisation de technologies innovantes et la volonté
                   de se dépasser sont pour moi les clés du succès dans mon
                   domaine.
-                </p>
+                </SplitReveal>
 
                 <div className="hero-btns">
-                  <Link href="/contact" className="theme-btn">
-                    Contactez-moi{" "}
-                    <i>
-                      {" "}
-                      <RiMailSendLine size={16} />{" "}
-                    </i>
-                  </Link>
+                  <Magnetic>
+                    <TransitionLink href="/contact" label="Contact" className="theme-btn">
+                      Contactez-moi{" "}
+                      <i>
+                        <RiMailSendLine size={16} />
+                      </i>
+                    </TransitionLink>
+                  </Magnetic>
                 </div>
               </div>
-            </SlideUp>
+            </Reveal>
           </div>
           {/* <!-- / END ABOUT TEXT DESIGN AREA --> */}
         </div>

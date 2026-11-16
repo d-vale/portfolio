@@ -179,8 +179,9 @@ a {
   color: var(--main-color);
   cursor: pointer;
   outline: none;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  /* Propriétés ciblées : `transition: all` entrerait en conflit avec GSAP */
+  transition: color 0.4s ease, background-color 0.4s ease,
+    border-color 0.4s ease, opacity 0.4s ease;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
 }
@@ -389,7 +390,7 @@ input[type="radio"] {
 
 html {
   scroll-behavior: unset !important;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /*

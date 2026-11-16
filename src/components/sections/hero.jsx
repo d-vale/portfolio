@@ -1,16 +1,11 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import {
-  RiFacebookCircleFill,
-  RiTwitterXLine,
-  RiLinkedinFill,
-  RiGithubLine,
-  RiCircleFill,
-  RiDownloadLine,
-} from "@remixicon/react";
+import { RiDownloadLine } from "@remixicon/react";
 import PartnersMarquee from "./partnersMarquee";
-import SlideUp from "@/utlits/animations/slideUp";
+import ProfileCard from "./profileCard";
+import Reveal from "@/components/motion/Reveal";
+import SplitReveal from "@/components/motion/SplitReveal";
+import Magnetic from "@/components/motion/Magnetic";
 
 const Hero = () => {
   return (
@@ -19,68 +14,48 @@ const Hero = () => {
         <div className="row">
           {/* <!-- START ABOUT IMAGE DESIGN AREA --> */}
           <div className="col-lg-4">
-            <SlideUp>
-              <div className="about-image-part">
-                <img src={"/images/about/profile.jpg"} alt="About Me" />
-                <h2>Daniel Vale</h2>
-                <p>Software Engineer 💻</p>
-                <div className="about-social text-center">
-                  <ul>
-                    <li>
-                      <Link
-                        href="https://www.linkedin.com/in/danielvale050403/"
-                        target="_blank"
-                      >
-                        <RiLinkedinFill size={20} />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="https://github.com/d-vale" target="_blank">
-                        <RiGithubLine size={20} />
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </SlideUp>
+            <Reveal className="h-100">
+              <ProfileCard />
+            </Reveal>
           </div>
           {/* <!-- / END ABOUT IMAGE DESIGN AREA -->
                     <!-- START ABOUT TEXT DESIGN AREA --> */}
           <div className="col-lg-8">
-            <SlideUp>
-              <div className="about-content-part">
-                <p>Bonjour !</p>
-                <h2>
-                  Je suis Daniel Vale, passionné d'informatique et de développement d'applications web.
-                </h2>
+            <Reveal delay={2}>
+              <div className="about-content-part hero-intro">
+                <p className="hero-kicker">Bonjour !</p>
+                <SplitReveal as="h2" by="words" delay={0.35}>
+                  Je suis Daniel Vale, passionné d'informatique et de
+                  développement d'applications web.
+                </SplitReveal>
                 <div className="adress-field">
                   <ul>
                     <li className="d-flex align-items-center">
-                      <i style={{ color: '#22c55e' }}>
-                        <RiCircleFill size={14} />
-                      </i>{" "}
+                      <span className="status-dot" aria-hidden="true" />
                       Disponible
                     </li>
                   </ul>
                 </div>
                 <div className="hero-btns">
-                  <Link
-                    href="/docs/DanielVale_CurriculumVitae.pdf"
-                    className="theme-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Télécharger mon CV{" "}
-                    <i>
-                      <RiDownloadLine size={16} />
-                    </i>
-                  </Link>
+                  <Magnetic>
+                    <a
+                      href="/docs/DanielVale_CurriculumVitae.pdf"
+                      className="theme-btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Télécharger mon CV{" "}
+                      <i>
+                        <RiDownloadLine size={16} />
+                      </i>
+                    </a>
+                  </Magnetic>
                 </div>
               </div>
-            </SlideUp>
-            <SlideUp>
+            </Reveal>
+            <Reveal delay={4}>
               <PartnersMarquee />
-            </SlideUp>
+            </Reveal>
           </div>
           {/* <!-- / END ABOUT TEXT DESIGN AREA --> */}
         </div>

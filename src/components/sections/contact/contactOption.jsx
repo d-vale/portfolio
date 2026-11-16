@@ -1,13 +1,13 @@
 import { RiMailLine, RiMapPinLine, RiPhoneLine } from '@remixicon/react'
 import React from 'react'
-import SlideUp from '../../../utlits/animations/slideUp'
+import Reveal from '@/components/motion/Reveal'
 
 const ContactOption = () => {
     return (
         <div className="col-lg-4">
-            <SlideUp>
-                <div className="contact-content-part">
-                    <SlideUp delay={2}>
+            <Reveal className="h-100">
+                <div className="contact-content-part h-100">
+                    <Reveal delay={3}>
                         <div className="single-contact">
                             <div className="contact-icon">
                                 <i> <RiMapPinLine size={20} /></i>
@@ -15,9 +15,9 @@ const ContactOption = () => {
                             <h2>Localisation :</h2>
                             <p>Région lausannoise</p>
                         </div>
-                    </SlideUp>
-                    <SlideUp delay={3}>
-                        <div className="single-contact wow fadeInUp" data-wow-delay=".4s">
+                    </Reveal>
+                    <Reveal delay={5}>
+                        <div className="single-contact">
                             <div className="contact-icon">
                                 <i> <RiPhoneLine size={20} /></i>
                             </div>
@@ -26,9 +26,9 @@ const ContactOption = () => {
                                 <a href="tel:+41796695062">+41 79 669 50 62</a>
                             </p>
                         </div>
-                    </SlideUp>
-                    <SlideUp delay={4}>
-                        <div className="single-contact wow fadeInUp" data-wow-delay=".6s">
+                    </Reveal>
+                    <Reveal delay={7}>
+                        <div className="single-contact">
                             <div className="contact-icon">
                                 <i> <RiMailLine size={20} /></i>
                             </div>
@@ -37,9 +37,9 @@ const ContactOption = () => {
                                 <a href="mailto:dpv@bobst-immobilier.ch">dpv@bobst-immobilier.ch</a>
                             </p>
                         </div>
-                    </SlideUp>
+                    </Reveal>
                 </div>
-            </SlideUp>
+            </Reveal>
         </div>
     )
 }
