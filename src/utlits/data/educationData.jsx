@@ -8,7 +8,7 @@ const educationData = [
   },
   {
     id: 2,
-    year: "2025 - Présent",
+    year: "2025",
     title: "Harvard CS50's Introduction to CS",
     institution: "EdX HarvardX",
     icon: "/images/about/education_logo/edx.png",
